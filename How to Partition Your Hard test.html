@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    document.onkeydown = function (e) {
+        if (event.keyCode == 123) {
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'i'.charCodeAt(0))) {
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && (e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'c'.charCodeAt(0))) {
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && (e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'j'.charCodeAt(0))) {
+            return false;
+        }
+        if (e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || e.keyCode == 'u'.charCodeAt(0))) {
+            return false;
+        }
+        if (e.ctrlKey && (e.keyCode == 'S'.charCodeAt(0) || e.keyCode == 's'.charCodeAt(0))) {
+            return false;
+        }
+    }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/7756979872.js" crossorigin="anonymous"></script>
+<meta name="theme-color" content="#004AAD" /></head>
+<style>
+  body {
+    font-family: "Varela Round", sans-serif;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
+    @font-face { font-family: Marske; src: url('/Marske.ttf'); } 
+.collapsible {
+  background-color: #1B1340;
+  color: white;
+  padding:10px;
+  min-width: 50%;
+  word-wrap:wrap;
+  font-weight: bolder;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 25px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-top:10px;
+}
+
+.active, .collapsible:hover {
+  background-color: #140A44;
+}
+
+/*.collapsible:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left:20px;
+  margin-right:0px;
+}
+
+.active:after {
+  content: "\2212";
+}*/
+.content p {
+    text-indent:30px;
+    text-align:justify;
+    padding:10px;
+    line-height:2;
+}
+.content {
+  width:100%; 
+  padding: 10px;
+  max-height: 100%;
+  background-color: #f1f1f1;
+  font-family: Marske;
+  }
+  .containers {
+      display:flex;
+      flex-direction:column;
+      height: 10%;
+  }
+  h3 {
+      padding:10px;
+  }
+  form {
+      padding-top:0;
+      padding:10px;
+      font-size: 19px;
+  }
+  input[type=button] {
+      padding-inline:15px;
+      padding-block:10px;
+  }
+  input[type=text] {
+    margin: 5px;
+    font-size: 16px;
+  }
+  input[type=number] {
+    margin: 5px;
+    margin-left: 10px;
+    font-size: 16px;
+  }
+  input[type=radio] {
+    transform: scale(1.3);
+    accent-color: #187bfd;
+  }
+  img {
+    width: 150px;
+    height: 50px;
+  } 
+  span  {
+    font-size: 20px;
+    margin-inline: 5px;
+  }
+  .cover {
+    width: 100vw;
+    height:100vh;
+    background-color: #eeee;
+    position: initial;
+    opacity: 1;
+    display: none;
+    z-index: -10;
+    background-image: linear-gradient(#93fdd7,#3ae1ea, #69b7ff, #187bfd);
+  }
+  p.score, p.moti {
+    text-align: center;
+/*     position: absolute;
+    top: 40%;
+    left: 55%; */
+  }
+  .pop-up {
+    position: absolute;
+    bottom: 100%;
+    z-index: 100;
+/*     left: 50%; */
+    width: 400px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    background:#c7c7f1;
+    visibility: hidden;
+    transition: all 0.2s;
+    animation: opens 2s;
+    border-radius: 15px;
+  }
+  @keyframes opens {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  .un {
+    visibility: visible;
+  }
+.open {
+  visibility:visible;
+  position: absolute;
+  top: 4%;
+  left: 35%; 
+  z-index: 100;
+  animation: pop 2s;
+}
+img {
+  border-radius: 20px;
+}
+#nema {
+/*   font-family: 'Times New Roman', Times, serif;
+ */  
+  font-family: 'Varela Round', sans-serif;
+  color: #1B1340;
+  text-align: center;
+/*   position: absolute;
+  top: 50%; */
+  text-decoration: underline;
+  text-transform: capitalize;
+}
+h1, h2, h3 {
+  display: block;
+}
+canvas {
+  z-index: 999;
+  position: absolute;
+  top: 0%;
+  display: none;
+}
+#score {
+  margin-inline: auto;
+  text-align: center;
+}
+#weeby {
+/*     position: absolute; */
+    width: 600px;
+    height: 350px;
+/*     top: -136%;
+ */    border-radius: 10px 10px 0px 0px;
+    z-index: 1;
+/*     margin-bottom: 20px;
+ */  }
+  h1 {
+    padding-top: 10px;
+  }
+  .buttonss{
+    width: fit-content;
+    position: absolute;
+    backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+    top: 0%; 
+    z-index: 999;
+    left: 1.5%;
+  }
+  .reverse, #reverse {
+    width:fit-content;
+    height: auto;
+    background-color: transparent;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 15px;
+    padding:10px;
+    color: white;
+/*     background:-webkit-gradient(linear,0% 0%,0% 100%, from(rgb(61, 90, 187) ), to(#2e54a7)  );
+ */     display: none;
+    z-index: 990;
+    transition: all 5s;
+    animation: pops 5s;
+    box-shadow: 0 0px 10px 0 rgba(248, 246, 246, 0.2), 0 0px 30px 0 rgba(248, 246, 246, 0.19);
+  }
+  @keyframes pop {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1); 
+    }
+  }
+  @keyframes pops {
+    0% {
+      transform: translateY(-20vw);
+    }
+    100% {
+      transform: translateY(0%); 
+    }
+  } 
+  i {
+    font-size: 16px;
+  }
+  .btn1 {
+  background-color: yellow;
+  font-weight:400;
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  border-radius: 50%;
+  padding-block: 5px;
+  margin-bottom: 8px;
+  }
+  .test {
+  width:20%;
+  height:auto;
+	z-index:999;
+ position:fixed;
+ bottom:0;
+ right:0;
+}
+li {
+  list-style: none;
+}
+.timer {
+  position: fixed;
+  bottom: 10%;
+  right:15%;
+  z-index: 10;
+  background-color: #140A44;
+  color: #f1f1f1;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.timer::after{
+  content: "";
+  width: 20px;
+  background-color: #3ae1ea;
+}
+.timer p {
+  text-align: center;
+  line-height: 2;
+  font-weight: bold;
+}
+.timer span {
+  color: gold;
+}
+.space {
+  width: 100px;
+}
+  </style>
+  <link rel="stylesheet" href="rain.css">
+  </head>
+  <body id="top" oncontextmenu="return false;">
+    <div class="cover" id="over"></div>
+    <div class="buttonss">
+    <ul class="reverse" id="reverse">
+<!--       <h4>Click any button to proceed.</h4>
+ -->     <a href="How to Partition Your Hard test.html"><li><button class="btn1"><i class="fa-solid fa-arrow-rotate-right"></i>Retest</button></li></a>
+ <a href="index.html"><li><button class="btn1"><i class="fa-solid fa-house"></i>Home</button>
+      </li></a>
+      <a href="#form"><li><button class="btn1"><i class="fa-solid fa-chart-line"></i>Stats</button></li></a>  
+    </ul>
+  </div>
+
+  <div class="timer" id="timer">
+    <p id="timers">Time Left: <br> <span>10:00 minutes</span> </p>
+   </div>
+
+      <div class="containers">
+<button class="collapsible"><img src="final.png" alt="">POSTTEST "HOW TO PARTITION YOUR HARD DRIVE IN WINDOWS"</button>
+<div class="content">
+  <div class="pop-up" id="popup">
+    <canvas id="canvas"></canvas>
+    <section class="rain"></section>
+    <div class="cheer">
+    <img src="" alt="" id="weeby">
+    <h1 class="pop" id="moti">Congratulations</h1>
+    <h1 class="pop" id="nema"></h1>
+    <hr>
+    <h2 id="score">Sorry</h2>
+  </div>
+  </div>
+
+
+  <form id="form">
+    <label for="name">LRN: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>   
+    <input type="number" pattern="[0-9]{12}" name="name" id="name" required><br>
+    <label for="grade">Yr. & Sec:</label>   
+    <input type="text" name="grade" id="grade" placeholder="11-Zuckerberg" disabled><br>
+    <br>
+    Choose the letter of the best answer.
+      <br><br>
+      <span id="status1"> </span>1.) Can we shrink the volume of the drive larger than available space? <br>
+      <input type="radio" name="1" class="option-input radio"> A.	Yes, Using a command line
+      <br>
+      <input type="radio" name="1" > B.	Maybe
+      <br>
+      <input type="radio" name="1" id="correct1"> C.	No
+      <br>
+      <input type="radio" name="1"> D.	None of the above
+      <br><br>
+
+      <span id="status2"></span>2.) Why do we have to divide the hard drive into multiple logical units? <br>
+      <input type="radio" name="2"> A.	Allows the use of different File system to be installed
+      <br>
+      <input type="radio" name="2" id="correct2"> B.	To separate the files and avoid data corruption.
+      <br>
+      <input type="radio" name="2"> C.	Improves access time for data and application located on the same partition
+      <br>
+      <input type="radio" name="2" > D. You need to create a segment so that the operating system knows what part of the hard drive it can use.
+      <br><br>
+
+      <span id="status3"></span>3.)	It is a process that reduces the amount of fragmentation. <br>
+      <input type="radio" name="3"> A.	Fragmentation
+      <br>
+      <input type="radio" name="3"> B.	Mass storage
+      <br>
+      <input type="radio" name="3" > C.	Files	
+      <br>
+      <input type="radio" name="3" id="correct3"> D.	Defragmentation
+      <br><br>
+
+      <span id="status4"></span>4.)  It is commonly called defragging. <br>
+      <input type="radio" name="4"> A.	Defragmenting 
+      <br>
+      <input type="radio" name="4" id="correct4"> B.	Defragmentation 
+      <br>
+      <input type="radio" name="4"> C.	Fragmentation
+      <br>
+      <input type="radio" name="4" > D.	Files	
+      <br><br>
+
+      <span id="status5"></span>5.) How many megabytes are there in a gigabyte? <br>
+      <input type="radio" name="5" id="correct5"> A.	1000 megabytes
+      <br>
+      <input type="radio" name="5"> B.	10 Gigabytes
+      <br>
+      <input type="radio" name="5" > C.	20 megabytes	
+      <br>
+      <input type="radio" name="5" > D.	1 megabytes
+      <br><br>
+
+      <span id="status6"></span>6.) What do you call the process of dividing your hard drives into logical units? <br>
+      <input type="radio" name="6" id="correct6"> A.	Disk Partitioning
+      <br>
+      <input type="radio" name="6" > B.	Segments
+      <br>
+      <input type="radio" name="6" > C.	Configure
+      <br>
+      <input type="radio" name="6" > D.	Division
+      <br><br>
+
+      <span id="status7"></span>7.) In what tool can you find Disk Management? <br>
+      <input type="radio" name="7"> A.	Disk utility
+      <br>
+      <input type="radio" name="7" id="correct7"> B.	Computer Management Tool
+      <br>
+      <input type="radio" name="7" > C.	Disk clean up tool
+      <br>
+      <input type="radio" name="7" > D.	Disk Compression tool
+      <br><br>
+
+      <span id="status8"></span>8.) What do you call the drive that you are not allowed to altered? <br>
+      <input type="radio" name="8"> A.	Drive E
+      <br>
+      <input type="radio" name="8" id="correct8"> B.	System Reserved
+      <br>
+      <input type="radio" name="8" > C.	Hard disk drive
+      <br>
+      <input type="radio" name="8" > D.	CD drive
+      <br><br>
+
+      <span id="status9"></span>9.) Is there a fix or permanent letter for each partition in your hard drives? <br>
+      <input type="radio" name="9" id="correct9"> A.	No
+      <br>
+      <input type="radio" name="9" > B.	Yes
+      <br>
+      <input type="radio" name="9" > C.	Maybe
+      <br>
+      <input type="radio" name="9" > D.	None of the above
+      <br><br>   
+  
+      <span id="status10"></span>10.) What should be the file system setting if we format the new volume? <br>
+      <input type="radio" name="10" > A.	Format
+      <br>
+      <input type="radio" name="10" > B.	Create megabytes
+      <br>
+      <input type="radio" name="10" > C.	Format the volume with the default settings
+      <br>
+      <input type="radio" name="10" id="correct10"> D.	NTFS
+      <br><br><br>
+      <a href="#top"><input type="button" id="btn" value="Submit Answers" onclick="results()"></a>
+		
+	<img src="test.png" class="test" id="fixedTest">
+  </form>
+  
+</div>
+</div>
+<script>
+  var coll = document.getElementsByClassName("collapsible");
+    var i;
+    
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight){
+          content.style.maxHeight = null;
+        }
+         else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    }
+</script>
+<script src=".\Posttest\diskpart.js">
+</script>
+<script src="rain.js"></script>
+</body>
+</html>
